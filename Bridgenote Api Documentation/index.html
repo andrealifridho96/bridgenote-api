@@ -1,0 +1,298 @@
+<!--
+ API Documentation HTML Template  - 1.0.1
+ Copyright © 2016 Florian Nicolas
+ Licensed under the MIT license.
+ https://github.com/ticlekiwi/API-Documentation-HTML-Template
+ !-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bridgenote API - Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500|Source+Code+Pro:300" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body class="one-content-column-version">
+<div class="left-menu">
+    <div class="content-logo">
+        <img alt="platform by Emily van den Heever from the Noun Project" title="platform by Emily van den Heever from the Noun Project" src="images/Id_login.png" height="32" style="width: 50%; height: 50%; background: #323F4C; padding: 12px; margin: 6px;" />
+        <span>Bridgenote API Documentation</span>
+    </div>
+    <div class="content-menu">
+        <ul>
+            <li class="scroll-to-link active" data-target="get-started">
+                <a>GET STARTED</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-user">
+                <a>Get User</a>
+            </li>
+            <li class="scroll-to-link" data-target="insert-user">
+                <a>Insert User</a>
+            </li>
+            <li class="scroll-to-link" data-target="update-user">
+                <a>Update User</a>
+            </li>
+            <li class="scroll-to-link" data-target="delete-user">
+                <a>Delete User</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-user-social">
+                <a>Get User Via Socmed</a>
+            </li>
+            <li class="scroll-to-link" data-target="errors">
+                <a>Errors</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content-page">
+    <div class="content">
+        <div class="overflow-hidden content-section" id="content-get-started">
+            <h1 id="get-started">Get started</h1>
+            <p>
+                The Bridgenote API provides programmatic access to insert, retrieve, update and delete user data (id, status and position).
+            </p>
+            <p>
+                To use this API, you need an <strong>API token</strong>. Please contact us at <a href="mailto:andre.alifridho@gmail.com">andre.alifridho@gmail.com</a> to get your own API token.
+            </p>
+        </div>
+        <div class="overflow-hidden content-section" id="content-get-user">
+            <h2 id="get-user">get user</h2>
+            <p>
+                To get user data you need to make a GET call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/get</code><br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/get?id=</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>X-Client-Token</td>
+                    <td>String</td>
+                    <td>Header</td>
+                    <td>Your API client token.</td>
+                </tr>
+                <tr>
+                    <td>Id</td>
+                    <td>int</td>
+                    <td>Param</td>
+                    <td>(Optional) User Id to retrieve the data if you want to get the specific data by id</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-insert-user">
+            <h2 id="insert-user">insert user</h2>
+            <p>
+                To insert user data you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/insert</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>X-Client-Token</td>
+                    <td>String</td>
+                    <td>Header</td>
+                    <td>Your API client token.</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>String</td>
+                    <td>form-data</td>
+                    <td>(Required) to insert status value "active" or "inactive"</td>
+                </tr>
+                <tr>
+                    <td>position</td>
+                    <td>String</td>
+                    <td>form-data</td>
+                    <td>(Required) to insert position value</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-update-user">
+            <h2 id="update-user">update user</h2>
+            <p>
+                To update user data you need to make a PUT call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/update?id={id}&status={value}&position={value}</code><br>
+                If you want to update just only one field just send one parameter (status or position).
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>X-Client-Token</td>
+                    <td>String</td>
+                    <td>Header</td>
+                    <td>Your API client token.</td>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>int</td>
+                    <td>param</td>
+                    <td>(Required) to get user you want to update</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>String</td>
+                    <td>param</td>
+                    <td>(Required) to update status value</td>
+                </tr>
+                <tr>
+                    <td>position</td>
+                    <td>String</td>
+                    <td>param</td>
+                    <td>(Required) to update position value</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-delete-user">
+            <h2 id="delete-user">delete user</h2>
+            <p>
+                To delete user data you need to make a DELETE call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/delete?id={id}</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>X-Client-Token</td>
+                    <td>String</td>
+                    <td>Header</td>
+                    <td>Your API client token.</td>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>int</td>
+                    <td>param</td>
+                    <td>(Required) to get user you want to update</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-user-social">
+            <h2 id="get-user-social">get user social media</h2>
+            <p>
+                To get user data from social media you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/auth/facebook</code><br>
+                <code class="higlighted">http://localhost:8000/auth/google</code>
+            </p>
+        </div>
+        <div class="overflow-hidden content-section" id="content-errors">
+            <h2 id="errors">Errors</h2>
+            <p>
+                The Bridgenote API uses the following error codes:
+            </p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Error Code</th>
+                    <th>Meaning</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>401</td>
+                    <td>
+                        Unknown or unvalid <code class="higlighted">X-CLient-Token</code>. This error appears if you use an unknown API token.
+                    </td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>
+                        Internal server error
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+    .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+
+    @keyframes octocat-wave {
+        0%,
+        100% {
+            transform: rotate(0)
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg)
+        }
+        40%,
+        80% {
+            transform: rotate(10deg)
+        }
+    }
+
+    @media (max-width:500px) {
+        .github-corner:hover .octo-arm {
+            animation: none
+        }
+        .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out
+        }
+    }
+</style>
+<!-- END Github Corner Ribbon - to remove -->
+<script src="js/script.js"></script>
+</body>
+
+</html>
