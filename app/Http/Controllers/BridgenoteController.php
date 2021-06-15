@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
+use App\Models\Members;
 use App\Models\Clients;
 
 class BridgenoteController extends Controller
@@ -109,7 +109,7 @@ class BridgenoteController extends Controller
           $getClient = clients::where('token', $token)->first();
 
           if ($getClient) {
-            $insert = User::create($request->all());
+            $insert = Members::create($request->all());
 
             if ($insert) {
 
@@ -167,9 +167,9 @@ class BridgenoteController extends Controller
 
             if ($request->id) {
 
-              $getUser = User::where('id', $request->id)->first();
+              $getMembers = Members::where('id', $request->id)->first();
 
-              if (!$getUser) {
+              if (!$getMembers) {
 
                 return response()->json([
                   'status' => 0,
@@ -182,20 +182,20 @@ class BridgenoteController extends Controller
                   'status' => 1,
                   'msg' => 'data found',
                   'data' => [
-                    'id' => $getUser->id,
-                    'status' => $getUser->status,
-                    'position' => $getUser->position,
+                    'id' => $getMembers->id,
+                    'status' => $getMembers->status,
+                    'position' => $getMembers->position,
                   ]
                 ]);
 
                 }
             } else {
-              $user = User::all('id', 'status', 'position');
+              $Members = Members::all('id', 'status', 'position');
 
                 return response()->json([
                   'status' => 1,
                   'msg' => 'data found',
-                  'data' => $user
+                  'data' => $Members
                 ]);
             }
 
@@ -252,19 +252,19 @@ class BridgenoteController extends Controller
           if ($getClient) {
 
             if ($request->status && $request->position) {
-              User::find($request->id)->update(['status' => $request->status], ['position' => $request->position]);
+              Members::find($request->id)->update(['status' => $request->status], ['position' => $request->position]);
               return response()->json([
                 'status' => 1,
                 'msg' => 'data updated'
               ]);
             } elseif ($request->status) {
-              User::find($request->id)->update(['status' => $request->status]);
+              Members::find($request->id)->update(['status' => $request->status]);
               return response()->json([
                 'status' => 1,
                 'msg' => 'data updated'
               ]);
             } elseif ($request->position) {
-              User::find($request->id)->update(['position' => $request->position]);
+              Members::find($request->id)->update(['position' => $request->position]);
               return response()->json([
                 'status' => 1,
                 'msg' => 'data updated'
@@ -330,7 +330,7 @@ class BridgenoteController extends Controller
 
           if ($getClient) {
 
-            $delete = User::where('id',$request->id)->delete();
+            $delete = Members::where('id',$request->id)->delete();
 
             if ($delete) {
               return response()->json([

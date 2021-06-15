@@ -33,6 +33,9 @@ class LoginController extends Controller
 
             $user = Socialite::driver('facebook')->stateless()->user();
 
+            //disini data user bisa diregister atau login jika sudah pernah register.
+            //sekarang belum bisa karena masih di localhost
+
             return response()->json([
               'status' => 1,
               'msg' => 'get data success',
@@ -57,6 +60,9 @@ class LoginController extends Controller
        try {
 
            $user = Socialite::driver('google')->user();
+
+           //disini data user bisa diregister atau login jika sudah pernah register.
+           //sekarang belum bisa karena masih di localhost
 
            return response()->json([
              'status' => 1,

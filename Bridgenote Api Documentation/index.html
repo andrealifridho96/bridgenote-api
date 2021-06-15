@@ -50,6 +50,21 @@
             <li class="scroll-to-link" data-target="delete-user">
                 <a>Delete User</a>
             </li>
+            <li class="scroll-to-link" data-target="register-user">
+                <a>Register User</a>
+            </li>
+            <li class="scroll-to-link" data-target="login-user">
+                <a>Login User</a>
+            </li>
+            <li class="scroll-to-link" data-target="me-user">
+                <a>Get User Login</a>
+            </li>
+            <li class="scroll-to-link" data-target="refresh-user">
+                <a>Refresh</a>
+            </li>
+            <li class="scroll-to-link" data-target="logout-user">
+                <a>Logout</a>
+            </li>
             <li class="scroll-to-link" data-target="get-user-social">
                 <a>Get User Via Socmed</a>
             </li>
@@ -223,6 +238,119 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-register-user">
+            <h2 id="register-user">register user</h2>
+            <p>
+                To register user you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/register</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>username</td>
+                    <td>String</td>
+                    <td>form-data</td>
+                    <td>(Required) username</td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td>String</td>
+                    <td>form-data</td>
+                    <td>(Required) user email</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>String</td>
+                    <td>form-data</td>
+                    <td>(Required) user password</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-login-user">
+            <h2 id="login-user">login user</h2>
+            <p>
+                To login user and get login token you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/login</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>email</td>
+                      <td>String</td>
+                      <td>form-data</td>
+                      <td>(Required) user email</td>
+                  </tr>
+                  <tr>
+                      <td>password</td>
+                      <td>String</td>
+                      <td>form-data</td>
+                      <td>(Required) user password</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-me-user">
+            <h2 id="me-user">get user data login</h2>
+            <p>
+                To get user data who are logged in you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/me</code>
+            </p>
+            <br>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>token</td>
+                      <td>String</td>
+                      <td>param</td>
+                      <td>(Required) token that you get from login endpoint</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-refresh-user">
+            <h2 id="refresh-user">refresh user</h2>
+            <p>
+                To refresh a token login you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/refresh</code>
+            </p>
+        </div>
+        <div class="overflow-hidden content-section" id="content-logout-user">
+            <h2 id="logout-user">logout user</h2>
+            <p>
+                To logout you need to make a POST call to the following url :<br>
+                <code class="higlighted">http://localhost:8000/api/bridgenote/logout</code>
+            </p>
         </div>
         <div class="overflow-hidden content-section" id="content-user-social">
             <h2 id="get-user-social">get user social media</h2>

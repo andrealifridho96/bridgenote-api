@@ -7,19 +7,27 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'status',
-        'position',
+      'username',
+      'email',
+      'password',
+      'facebook_id',
+      'google_id'
+    ];
+
+    protected $hidden = [
+      'password',
+      'remember_token'
+    ];
+
+    protected $casts = [
+      'email_verified_at' => 'datetime',
     ];
 
     public function getJWTIdentifier()
